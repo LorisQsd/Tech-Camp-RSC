@@ -1,0 +1,39 @@
+"use client";
+import { useEffect, useState } from "react";
+
+/** This component aims to display the total load time of a server component.
+ *
+ * You need to completely refresh the page to see the exact timer
+ */
+export default function LoadTimeTracker() {
+  const [loadTime, setLoadTime] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      if (performance.getEntriesByType) {
+        const [navigationEntry] = performance.getEntriesByType("navigation");
+
+        if (navigationEntry) {
+          const loadDuration = performance.now() - navigationEntry.startTime;
+          setLoadTime(loadDuration);
+        }
+      }
+    };
+
+    handleLoad();
+
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
+  return (
+    loadTime !== null && (
+      <div className="fixed bottom-4 right-4 text-xl text-red-800 dark:text-red-400">
+        Page load time: {(loadTime / 1000).toFixed(3)} s
+      </div>
+    )
+  );
+}

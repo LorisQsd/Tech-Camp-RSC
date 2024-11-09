@@ -1,0 +1,70 @@
+import { Products } from "@/types/dummy_product";
+
+export const mockProducts: Products = {
+  products: [
+    {
+      id: 1,
+      title: "Essence Mascara Lash Princess",
+      price: 9.99,
+      sku: "RCH45Q1A",
+      shippingInformation: "Ships in 1 month",
+      tags: ["beauty", "mascara"],
+    },
+    {
+      id: 2,
+      title: "Eyeshadow Palette with Mirror",
+      price: 19.99,
+      sku: "MVCFH27F",
+      shippingInformation: "Ships in 2 weeks",
+      tags: ["beauty", "eyeshadow"],
+    },
+    {
+      id: 3,
+      title: "Powder Canister",
+      price: 14.99,
+      sku: "9EN8WLT2",
+      shippingInformation: "Ships in 1-2 business days",
+      tags: ["beauty", "face powder"],
+    },
+    {
+      id: 4,
+      title: "Red Lipstick",
+      price: 12.99,
+      sku: "O5IF1NTA",
+      shippingInformation: "Ships in 2 weeks",
+      tags: ["beauty", "lipstick"],
+    },
+    {
+      id: 5,
+      title: "Red Nail Polish",
+      price: 8.99,
+      sku: "YUIIIP4W",
+      shippingInformation: "Ships in 1 week",
+      tags: ["beauty", "nail polish"],
+    },
+    {
+      id: 6,
+      title: "Calvin Klein CK One",
+      price: 49.99,
+      sku: "DZM2JQZE",
+      shippingInformation: "Ships overnight",
+      tags: ["fragrances", "perfumes"],
+    },
+    {
+      id: 7,
+      title: "Chanel Coco Noir Eau De",
+      price: 129.99,
+      sku: "K71HBCGS",
+      shippingInformation: "Ships in 1 month",
+      tags: ["fragrances", "perfumes"],
+    },
+    {
+      id: 8,
+      title: "Dior J'adore",
+      price: 89.99,
+      sku: "E70NB03B",
+      shippingInformation: "Ships in 2 weeks",
+      tags: ["fragrances", "perfumes"],
+    },
+  ],
+};
