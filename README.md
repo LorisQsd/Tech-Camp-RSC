@@ -49,3 +49,11 @@ The project will be available at http://localhost:3000.
 ## Additional Information
 
 No environment variables are required for this setup. If you encounter any issues, please check your Node.js and Yarn versions.
+
+# Practical Cases
+
+To follow the Interactivity and Streaming practical cases, I invite you to switch between branches.
+
+There is a `interactivity` and `streaming` branch that contains few commits with comments where you can find the DO / DON'T best practices.
+
+Enjoy it ☺
