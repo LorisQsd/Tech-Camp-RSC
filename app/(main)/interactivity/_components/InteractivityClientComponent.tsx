@@ -3,9 +3,14 @@
 import { Colors } from "@/types/colors";
 import cn from "@/utils/cn";
 import { useState } from "react";
-import StandaloneChild from "./StandaloneChild";
 
-const InteractivityClientComponent = () => {
+const InteractivityClientComponent = ({
+  children,
+  slot,
+}: {
+  children?: React.ReactNode;
+  slot: React.ReactNode;
+}) => {
   const [color, setColor] = useState<Colors>("red");
 
   const handleButtonClick = (color: Colors) => () => setColor(color);
@@ -13,8 +18,13 @@ const InteractivityClientComponent = () => {
   return (
     <>
       <article className="border-2 border-gray-300 rounded-md space-y-5 px-6 py-4">
-        <h2 className="text-3xl font-bold">Change the card color</h2>
-
+        {/* 
+            TIPS - Their is also another way to render a server component within a client boundary.
+            We could use the following slot pattern and render a ReactNode.
+            
+            So finally, as long as we are rendering a ReactNode into our client boundary, we'll be able to render a server component again.
+        */}
+        {slot}
         <div className="flex justify-between">
           <button
             onClick={handleButtonClick("red")}
@@ -41,8 +51,9 @@ const InteractivityClientComponent = () => {
         )}
       >
         <p className="text-xl">Card</p>
-        {/* Even if the StandaloneChild is server by default, it is evaluated as a client component because its parent (this component) uses the 'use client' directive. */}
-        <StandaloneChild />
+        {/* To be able to render a server component inside a client boundary, we'll need to use the composition pattern and pass our server component using the children prop */}
+        {/* Composition Pattern source with a great example using a context provider : https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns#using-context-providers */}
+        {children}
       </div>
     </>
   );
