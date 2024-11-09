@@ -1,4 +1,6 @@
 import LoadTimeTracker from "@/components/ui/LoadtimeTracker";
+import ProductCardSkeleton from "@/components/ui/skeletons/ProductCardSkeleton";
+import ReviewCardSkeleton from "@/components/ui/skeletons/ReviewCardSkeleton";
 import { Suspense } from "react";
 import ProductWrapper from "./_components/wrapper/ProductWrapper";
 import ReviewWrapper from "./_components/wrapper/ReviewWrapper";
@@ -9,9 +11,8 @@ const Page = () => (
     <section>
       <h2 className="text-2xl mb-4 font-bold">ProductList</h2>
       <div className="grid grid-cols-12 gap-10">
-        {/* We are simply using the Suspense component from React to handle the loading state */}
-        {/* The fallback is the content that'll render during the loading state */}
-        <Suspense fallback={<>Loading Products...</>}>
+        {/* The perfect solution is to make a UI feedback using skeletons */}
+        <Suspense fallback={<ProductCardSkeleton />}>
           <ProductWrapper />
         </Suspense>
       </div>
@@ -20,9 +21,9 @@ const Page = () => (
     <section>
       <h2 className="text-2xl my-4 font-bold">Reviews ⭐</h2>
       <ul className="grid grid-cols-12 gap-4">
-        {/* !! But, as you can see, there's a lot of CLS (Cumulative Layout Shift) !! */}
-        {/* Reviews are pushed down when the Product promise is resolved. As you may guess, it is really bad for the UX (User Experience) */}
-        <Suspense fallback={<>Loading Reviews...</>}>
+        {/* Skeleton doesn't affect the SEO and greatly improve the CLS */}
+        {/* Those skeletons needs to be developped within a UI/UX designer to anticipate as much as possible the final result and make a pretty close pixel perfect UI feedback */}
+        <Suspense fallback={<ReviewCardSkeleton />}>
           <ReviewWrapper />
         </Suspense>
       </ul>
